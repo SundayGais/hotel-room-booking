@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Softinn Hotel Booking</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="hero-section text-center d-flex align-items-center justify-content-center" *ngIf="!showRoomList">
+    <div class="hero-content">
+        <h1 class="display-2 text-white mb-2">Softinn Hotel</h1>
+        <img src="https://www.mysoftinn.com/images/shared-file/wsoftinn.png" alt="Softinn Hotel Lobby" class="img-fluid rounded mb-4" style="max-width: 80%; height: auto;">
+        <p class="lead text-white-50 mb-5">Your journey to relaxation starts here. Browse our curated selection of rooms.<br>Where comfort meets convenience. Start your memorable journey with us.<br>
+           Your perfect stay, just a click away..</p>
+        <button class="btn btn-warning btn-lg px-5 py-3" (click)="displayRoomList()">BOOK YOUR ROOM NOW</button>
+    </div>
+</div>
+
+<div class="main-content" *ngIf="showRoomList" id="room-list-section">
+  <app-room-list></app-room-list> </div>

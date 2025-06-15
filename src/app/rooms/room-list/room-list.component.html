@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <h2 class="mb-4">List of Rooms :</h2>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true"
+         [class.show]="showBookingSuccessToast">
+      <div class="d-flex">
+        <div class="toast-body">
+          Room <strong>{{ bookedRoomName }}</strong> booked successfully!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col" *ngFor="let room of rooms">
+      <div class="card h-100 shadow-sm">
+        <img *ngIf="room.imageUrl" [src]="room.imageUrl" class="card-img-top" alt="Room Image" style="object-fit: cover; height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title">{{ room.name }}</h5>
+          <p class="card-text">Type: {{ room.type }}</p>
+          <p class="card-text">Price: ${{ room.price }}</p>
+          <p class="card-text">
+            Availability: <strong [class]="getAvailabilityClass(room.availability)">{{ room.availability }}</strong>
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-top-0">
+          <button
+            class="btn btn-primary w-100"
+            [disabled]="room.availability === 'Booked'"
+            (click)="openBookingModal(room)"
+          >
+            {{ room.availability === 'Booked' ? 'Booked' : 'Book' }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 text-center mt-5" *ngIf="rooms.length === 0">
+        <p>No rooms found or still loading...</p>
+    </div>
+  </div>
+</div>
+
+<app-book-room-modal [selectedRoom]="selectedRoom" (bookingSuccess)="onBookingSuccess($event)"></app-book-room-modal>

@@ -1,0 +1,16 @@
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1500x800/007bff/ffffff?text=Hotel+Hero+Image') no-repeat center center; /* Replace with a real hotel image URL */
+  background-size: cover;
+  min-height: 80vh; // Take up most of the viewport height
+  color: white;
+  padding: 50px 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.main-content {
+    padding-top: 20px; // Add some padding above the room list when it appears
+}

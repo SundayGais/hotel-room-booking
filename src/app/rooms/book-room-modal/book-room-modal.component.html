@@ -1,0 +1,42 @@
+<div class="modal fade" id="bookRoomModal" tabindex="-1" aria-labelledby="bookRoomModalLabel" aria-hidden="true" *ngIf="selectedRoom">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookRoomModalLabel">Book Room: {{ selectedRoom.name }} ({{ selectedRoom.type }})</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="guestName" class="form-label">Guest Name</label>
+            <input type="text" class="form-control" id="guestName" formControlName="guestName"
+                   [class.is-invalid]="bookingForm.get('guestName')?.invalid && bookingForm.get('guestName')?.touched">
+            <div *ngIf="bookingForm.get('guestName')?.invalid && bookingForm.get('guestName')?.touched" class="invalid-feedback">
+              Guest Name is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="checkInDate" class="form-label">Check-in Date</label>
+            <input type="date" class="form-control" id="checkInDate" formControlName="checkInDate"
+                   [class.is-invalid]="bookingForm.get('checkInDate')?.invalid && bookingForm.get('checkInDate')?.touched">
+            <div *ngIf="bookingForm.get('checkInDate')?.invalid && bookingForm.get('checkInDate')?.touched" class="invalid-feedback">
+              Check-in Date is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="checkOutDate" class="form-label">Check-out Date</label>
+            <input type="date" class="form-control" id="checkOutDate" formControlName="checkOutDate"
+                   [class.is-invalid]="bookingForm.get('checkOutDate')?.invalid && bookingForm.get('checkOutDate')?.touched">
+            <div *ngIf="bookingForm.get('checkOutDate')?.invalid && bookingForm.get('checkOutDate')?.touched" class="invalid-feedback">
+              Check-out Date is required.
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between px-0 pb-0 pt-3 border-top-0">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" [disabled]="bookingForm.invalid">Book Now</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
